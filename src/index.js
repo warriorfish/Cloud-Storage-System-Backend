@@ -1,6 +1,11 @@
 const express = require('express');
-const app = express()
-const port = 6676
+
+if(!process.env.PROD){
+    require('dotenv').config()
+}
+
+const app = express();
+const port = process.env.SERVER_PORT;
 
 app.get('/',(req,res)=>{
     res.json({'msg':'hello world'})
