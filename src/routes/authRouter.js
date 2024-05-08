@@ -25,7 +25,7 @@ router.post(
         const user = await userController.getUserByEmail(userName);
 
         const match = await bcrypt.compare(passwd, user.passwd);
-        const accessToken = jwt.sign(JSON.stringify(user), TOKEN_SECRET)
+        const accessToken = jwt.sign(user.userId, TOKEN_SECRET)
         if(match){
             res.json({ accessToken: accessToken });
         } else {
