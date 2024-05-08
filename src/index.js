@@ -4,7 +4,8 @@ if(!process.env.PROD){
     require('dotenv').config()
 }
 
-const usersRouter = require('./routes/users/userRouter');
+const usersRouter = require('./routes/userRouter');
+const authRouter = require('./routes/authRouter');
 
 const app = express();
 const port = process.env.SERVER_PORT;
@@ -16,6 +17,7 @@ app.get('/',(req,res)=>{
     res.json({'msg':'hello world'})
 })
 
+app.use('/v1/auth/',authRouter);
 app.use('/v1/user/',usersRouter);
 
 

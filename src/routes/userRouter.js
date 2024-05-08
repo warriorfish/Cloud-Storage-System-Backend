@@ -1,8 +1,8 @@
 const express = require('express');
 const { check } = require('express-validator');
-const userController = require('../../controllers/userController');
+const userController = require('../controllers/userController');
 const router = express.Router();
-const {handleValidationMiddleWare} = require('../../middlewares/validationUtils');
+const {handleValidationMiddleWare} = require('../middlewares/validationUtils');
 const bcrypt = require('bcrypt');
 
 const saltRoundsForPassword = 10;
@@ -37,5 +37,6 @@ router.post(
         res.sendStatus(200);
     }
 )
+
 
 module.exports = router;

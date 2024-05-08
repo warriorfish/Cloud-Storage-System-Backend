@@ -18,14 +18,19 @@ async function getUserById(userId){
     )
 }
 
+async function getUserByEmail(userEmail){
+    return await User.findOne({ where: { emailAddress: userEmail }}) 
+}
+
 
 async function deleteUserById(userId){
-    await User.destroy({ where: { userId: userId } });
+    await User.destroy({ where: { userId: userId }});
 }
 
 
 module.exports = {
     createUser,
     getUserById,
-    deleteUserById
+    deleteUserById,
+    getUserByEmail
 }
